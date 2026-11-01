@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NSW School Planning Guide & Exam Breakdown</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --secondary: #2b6cb0;
+            --accent: #2c5282;
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --highlight: #2f855a;
+            --highlight-light: #f0fff4;
+            --highlight-border: #c6f6d5;
+            --scholarship-accent: #742a2a;
+            --scholarship-light: #fff5f5;
+            --scholarship-border: #fed7d7;
+            --acer-accent: #4a5568;
+            --acer-light: #edf2f7;
+            --acer-border: #cbd5e0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            color: var(--primary);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .nav-links {
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-top: 5px solid var(--secondary);
+        }
+
+        .action-card {
+            border-top: 5px solid var(--highlight);
+        }
+
+        .exam-card {
+            border-top: 5px solid var(--accent);
+        }
+
+        .scholarship-card {
+            border-top: 5px solid var(--scholarship-accent);
+        }
+
+        .acer-prep-card {
+            border-top: 5px solid var(--acer-accent);
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #edf2f7;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Flowchart Styles */
+        .flowchart-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .flow-step {
+            background: var(--highlight-light);
+            border: 2px solid var(--highlight-border);
+            border-radius: 10px;
+            padding: 18px 20px;
+            display: grid;
+            grid-template-columns: 50px 1fr auto;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .flow-number {
+            background: var(--highlight);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            justify-self: center;
+        }
+
+        .flow-content h3 {
+            margin: 0 0 3px 0;
+            color: var(--primary);
+            font-size: 1.05rem;
+        }
+
+        .flow-content p {
+            margin: 0;
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+
+        .flow-month {
+            background: var(--primary);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        .flow-arrow {
+            text-align: center;
+            color: var(--highlight);
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin: -8px 0;
+        }
+
+        /* Exam Format Grid */
+        .exam-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .exam-component {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            position: relative;
+        }
+
+        .exam-component h3 {
+            margin-top: 0;
+            color: var(--primary);
+            font-size: 1.15rem;
+            border-bottom: 1px solid #cbd5e0;
+            padding-bottom: 8px;
+        }
+
+        .exam-meta {
+            font-size: 0.85rem;
+            color: var(--secondary);
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .exam-component p {
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        /* Provider Specific Grid */
+        .provider-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .provider-card {
+            background: var(--scholarship-light);
+            border: 1px solid var(--scholarship-border);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .provider-card h3 {
+            margin-top: 0;
+            color: var(--scholarship-accent);
+            font-size: 1.2rem;
+            border-bottom: 1px solid var(--scholarship-border);
+            padding-bottom: 8px;
+        }
+
+        .provider-card ul {
+            margin: 0;
+            padding-left: 20px;
+            font-size: 0.9rem;
+        }
+
+        .provider-card li {
+            margin-bottom: 8px;
+        }
+
+        /* ACER Prep Grid */
+        .acer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .acer-box {
+            background: var(--acer-light);
+            border: 1px solid var(--acer-border);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .acer-box h3 {
+            margin-top: 0;
+            color: var(--primary);
+            font-size: 1.15rem;
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 6px;
+        }
+
+        .acer-box ul {
+            margin: 0;
+            padding-left: 20px;
+            font-size: 0.9rem;
+        }
+
+        .acer-box li {
+            margin-bottom: 8px;
+        }
+
+        .timeline {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 0 0;
+        }
+
+        .timeline li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        .timeline li:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--secondary);
+        }
+
+        .timeline-date {
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .choices-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .choice-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            position: relative;
+        }
+
+        .choice-badge {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: var(--secondary);
+            color: white;
+            padding: 2px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .choice-card h3 {
+            margin: 10px 0 5px 0;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .choice-type {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .legend-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .legend-box h3 {
+            margin-top: 0;
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .legend-box ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .legend-box li {
+            margin-bottom: 4px;
+        }
+
+        /* Table Styles */
+        .table-responsive {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.85rem;
+        }
+
+        th, td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #f8fafc;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background-color: #fdfdfd;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>NSW School Planning Guide & Exam Breakdown</h1>
+        <p>Action Flowchart, Key Dates, Top Selective Choices, Independent Backups & Exam Formats</p>
+        <div class="nav-links">
+            <a href="file:///Users/wendymedalla/secondary_school/selective_school_exam.html">&larr; Return to Main Planning Guide</a>
+        </div>
+    </header>
+
+    <!-- Section 1: Concise Visual Action Flowchart -->
+    <div class="card action-card">
+        <h2>🗺️ Concise Action Plan Flowchart</h2>
+        <p style="color: var(--text-light); font-size: 0.95rem;"><em>Step-by-step workflow with immediate preparation and application milestones for a Year 4 cohort.</em></p>
+        
+        <div class="flowchart-container">
+            <!-- Step 1 -->
+            <div class="flow-step">
+                <div class="flow-number">1</div>
+                <div class="flow-content">
+                    <h3>Submit Private School General Registrations</h3>
+                    <p>Lodge general waitlist applications now to secure chronological priority for Year 7 entry.</p>
+                </div>
+                <div class="flow-month">Now<br><small>Late 2026 (Year 4)</small></div>
+            </div>
+
+            <div class="flow-arrow">↓</div>
+
+            <!-- Step 2 -->
+            <div class="flow-step">
+                <div class="flow-number">2</div>
+                <div class="flow-content">
+                    <h3>Prepare for Private School & Selective Exams Now</h3>
+                    <p>Begin structured academic preparation, practice computer-based test formats, and core skill-building.</p>
+                </div>
+                <div class="flow-month">Now Onwards<br><small>Late 2026 / Year 4</small></div>
+            </div>
+
+            <div class="flow-arrow">↓</div>
+
+            <!-- Step 3 -->
+            <div class="flow-step">
+                <div class="flow-number">3</div>
+                <div class="flow-content">
+                    <h3>Track & Apply for Scholarships</h3>
+                    <p>Monitor school portals and submit Year 7 academic and music scholarship applications.</p>
+                </div>
+                <div class="flow-month">Jun – Aug 2027<br><small>(Year 5)</small></div>
+            </div>
+
+            <div class="flow-arrow">↓</div>
+
+            <!-- Step 4 -->
+            <div class="flow-step">
+                <div class="flow-number">4</div>
+                <div class="flow-content">
+                    <h3>Apply for Selective High Schools</h3>
+                    <p>Submit online applications via the Department of Education portal listing up to 3 choices.</p>
+                </div>
+                <div class="flow-month">Nov 2027 – Feb 2028<br><small>(Year 5 into Year 6)</small></div>
+            </div>
+
+            <div class="flow-arrow">↓</div>
+
+            <!-- Step 5 -->
+            <div class="flow-step">
+                <div class="flow-number">5</div>
+                <div class="flow-content">
+                    <h3>Sit Selective Placement Test</h3>
+                    <p>Complete the computer-based statewide assessment across all 4 equal components.</p>
+                </div>
+                <div class="flow-month">May 2028<br><small>(Year 6)</small></div>
+            </div>
+
+            <div class="flow-arrow">↓</div>
+
+            <!-- Step 6 -->
+            <div class="flow-step">
+                <div class="flow-number">6</div>
+                <div class="flow-content">
+                    <h3>Verify Local Public Catchments</h3>
+                    <p>Map out guaranteed local comprehensive backup schools using NSW School Finder.</p>
+                </div>
+                <div class="flow-month">Ongoing / 2028<br><small>(Year 6)</small></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 2: Important Dates -->
+    <div class="card">
+        <h2>📅 Important Dates (Next Cohort Cycle)</h2>
+        <p style="color: var(--text-light); font-size: 0.95rem;"><em>Note: For children currently in Year 4, the application cycle opens in late Year 5 for the test in Year 6.</em></p>
+        <ul class="timeline">
+            <li><span class="timeline-date">November 2027:</span> Selective Applications Open</li>
+            <li><span class="timeline-date">February 2028:</span> Selective Applications Close</li>
+            <li><span class="timeline-date">May 2028:</span> Selective Placement Test (Sat in Year 6)</li>
+            <li><span class="timeline-date">August 2028:</span> Selective Placement Outcomes Released</li>
+        </ul>
+    </div>
+
+    <!-- Section 3: Top 3 Choices -->
+    <div class="card">
+        <h2>🏫 Top 3 Selective School Choices</h2>
+        <div class="choices-grid">
+            <div class="choice-card">
+                <span class="choice-badge">Choice 1</span>
+                <h3>Hornsby Girls High School</h3>
+                <div class="choice-type">Fully Selective • Girls-Only (State Rank #5)</div>
+                <p>Exceptional academic reputation, top-tier performance, and ideal local convenience on the Upper North Shore.</p>
+            </div>
+
+            <div class="choice-card">
+                <span class="choice-badge">Choice 2</span>
+                <h3>Sydney Girls High School</h3>
+                <div class="choice-type">Fully Selective • Girls-Only (State Rank #10)</div>
+                <p>A prestigious all-girls fully selective powerhouse located near Moore Park with stellar academic results.</p>
+            </div>
+
+            <div class="choice-card">
+                <span class="choice-badge">Choice 3</span>
+                <h3>Chatswood High School</h3>
+                <div class="choice-type">Partially Selective • Co-ed (State Rank #64)</div>
+                <p>Direct train ride down the T1 North Shore line; features a partially selective structure providing a more accessible entry buffer while maintaining high standards.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 4: Private School Backups -->
+    <div class="card">
+        <h2>🏛️ Top Private School Backups, Rankings, Tuition, Scholarships & Exam Bodies</h2>
+        <p style="color: var(--text-light); font-size: 0.95rem;">Independent girls and co-ed school options including state-wide HSC performance tiers, curriculum options, tuition estimates, scholarship application windows, and the associated scholarship exam body.</p>
+        
+        <!-- Tier Definition Guide -->
+        <div class="legend-box">
+            <h3>📊 Understanding HSC State Ranks, Tiers & Performance Bands</h3>
+            <ul>
+                <li><strong>Band 6 & "6s":</strong> The highest HSC performance band representing an exam mark of 90 to 100. "6s" refers to achieving multiple Band 6 results or a school's total count of top marks.</li>
+                <li><strong>Top Tier (State Rank ~Top 1–20):</strong> Elite academic powerhouses where 40%–70% of HSC exams achieve Band 6 top marks.</li>
+                <li><strong>High Tier (State Rank ~Top 21–50):</strong> Upper echelon schools where roughly 25%–40% of exams achieve Band 6s.</li>
+                <li><strong>Moderate / Regional Tiers:</strong> Strong, well-performing schools offering solid university pathways with broader entry criteria.</li>
+            </ul>
+        </div>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>School Name</th>
+                        <th>Location & Type</th>
+                        <th>HSC State Rank / Tier</th>
+                        <th>Curriculum</th>
+                        <th>Approx. Year 7 Tuition</th>
+                        <th>Scholarships Offered?</th>
+                        <th>School Enrolment Timing</th>
+                        <th>Scholarship Application Window</th>
+                        <th>Scholarship Exam Body</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Abbotsleigh</strong></td>
+                        <td>Wahroonga<br><em>Girls-Only</em></td>
+                        <td>Top Tier (State Rank ~#10)</td>
+                        <td>HSC</td>
+                        <td>$41,600 / yr</td>
+                        <td>Yes (Academic, Music, Boarding, Needs)</td>
+                        <td>Ideally 2–3+ years prior (Year 3/4)</td>
+                        <td>Opens June, Closes July (Year 5)</td>
+                        <td><strong>ACER</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pymble Ladies' College</strong></td>
+                        <td>Pymble<br><em>Girls-Only</em></td>
+                        <td>Top Tier (State Rank ~#15)</td>
+                        <td>HSC</td>
+                        <td>$44,710 / yr</td>
+                        <td>Yes (Academic, Music, Performance)</td>
+                        <td>Ideally 2–3+ years prior (Year 3/4)</td>
+                        <td>Closes mid-year (Year 5)</td>
+                        <td><strong>ACER</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ravenswood School for Girls</strong></td>
+                        <td>Gordon<br><em>Girls-Only</em></td>
+                        <td>High Tier (State Rank ~#15-20)</td>
+                        <td>HSC & IB Diploma</td>
+                        <td>$42,000 - $44,000 / yr</td>
+                        <td>Yes (Academic & Music)</td>
+                        <td>2–3 years prior</td>
+                        <td>Opens June, Closes August (Year 5)</td>
+                        <td><strong>ACER</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Barker College</strong></td>
+                        <td>Hornsby<br><em>Co-ed</em></td>
+                        <td>High Tier (State Rank ~#40-50)</td>
+                        <td>HSC & IB Diploma</td>
+                        <td>$42,300 / yr</td>
+                        <td>Yes (Academic & Music)</td>
+                        <td>Early registration advised (Years ahead)</td>
+                        <td>Opens Nov (Yr 5), Closes Feb (Yr 6)</td>
+                        <td><strong>ACER</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Meriden School</strong></td>
+                        <td>Strathfield<br><em>Girls-Only</em></td>
+                        <td>High Tier (State Rank ~#20-25)</td>
+                        <td>HSC</td>
+                        <td>$41,000 - $43,000 / yr</td>
+                        <td>Yes (Academic & Music)</td>
+                        <td>2–3 years prior</td>
+                        <td>Typically closes mid-year (Year 5)</td>
+                        <td><strong>ACER</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>PLC Sydney</strong></td>
+                        <td>Croydon<br><em>Girls-Only</em></td>
+                        <td>Top Tier (State Rank ~#15-20)</td>
+                        <td>HSC & IB Diploma</td>
+                        <td>$42,000 - $44,000 / yr</td>
+                        <td>Yes (Academic, Music, Boarding)</td>
+                        <td>2–3 years prior</td>
+                        <td>Usually closes around mid-year (Year 5)</td>
+                        <td><strong>ACER</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Wenona School</strong></td>
+                        <td>North Sydney<br><em>Girls-Only</em></td>
+                        <td>High Tier (State Rank ~#30-35)</td>
+                        <td>HSC</td>
+                        <td>$43,000 - $45,000 / yr</td>
+                        <td>Yes (Academic & Music)</td>
+                        <td>2–3 years prior</td>
+                        <td>Typically closes mid-year (Year 5)</td>
+                        <td><strong>ACER</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Arden Anglican School</strong></td>
+                        <td>Beecroft<br><em>Co-ed</em></td>
+                        <td>Strong Regional Tier</td>
+                        <td>HSC</td>
+                        <td>$25,000 - $28,000 / yr</td>
+                        <td>Yes (Academic)</td>
+                        <td>1–2 years prior</td>
+                        <td>Opens Term 4 (Yr 5), Closes Feb (Yr 6)</td>
+                        <td><strong>AAS / ACER</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Redlands</strong></td>
+                        <td>Cremorne<br><em>Co-ed</em></td>
+                        <td>High Tier (State Rank ~#20)</td>
+                        <td>HSC & IB Diploma</td>
+                        <td>$41,000 - $43,000 / yr</td>
+                        <td>Yes (Academic & Performing Arts)</td>
+                        <td>2–3 years prior</td>
+                        <td>Typically closes early-to-mid year (Year 5)</td>
+                        <td><strong>ACER</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Loreto Normanhurst</strong></td>
+                        <td>Normanhurst<br><em>Girls-Only</em></td>
+                        <td>High Tier (State Rank ~#35-40)</td>
+                        <td>HSC</td>
+                        <td>$38,000 - $41,000 / yr</td>
+                        <td>Yes (Academic, Music, Boarding)</td>
+                        <td>2–3 years prior</td>
+                        <td>Typically closes mid-year (Year 5)</td>
+                        <td><strong>ACER</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Section 5: Public Non-Selective & Under $20k Private Options -->
+    <div class="card">
+        <h2>💡 Top Public Non-Selective & Budget-Friendly Options (&lt; $20k/yr)</h2>
+        <p style="color: var(--text-light); font-size: 0.95rem;">Strong local public comprehensive schools and accessible Catholic/independent alternatives mapped across the same evaluation columns.</p>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>School Name</th>
+                        <th>Location & Type</th>
+                        <th>HSC State Rank / Tier</th>
+                        <th>Curriculum</th>
+                        <th>Approx. Year 7 Tuition</th>
+                        <th>Scholarships Offered?</th>
+                        <th>School Enrolment Timing</th>
+                        <th>Scholarship Application Window</th>
+                        <th>Scholarship Exam Body</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Asquith Girls High School</strong></td>
+                        <td>Asquith<br><em>Public Girls-Only</em></td>
+                        <td>State Rank #148</td>
+                        <td>HSC</td>
+                        <td>Standard Public (~$0 tuition)</td>
+                        <td>No</td>
+                        <td>Local catchment enrolment (Year 6)</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Killara High School</strong></td>
+                        <td>Killara<br><em>Public Co-ed</em></td>
+                        <td>State Rank #141</td>
+                        <td>HSC</td>
+                        <td>Standard Public (~$0 tuition)</td>
+                        <td>No</td>
+                        <td>Local catchment enrolment (Year 6)</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cheltenham Girls High School</strong></td>
+                        <td>Beecroft<br><em>Public Girls-Only</em></td>
+                        <td>State Rank #75</td>
+                        <td>HSC</td>
+                        <td>Standard Public (~$0 tuition)</td>
+                        <td>No</td>
+                        <td>Local catchment / partial selective intake</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mercy Catholic College</strong></td>
+                        <td>Chatswood<br><em>Catholic Girls</em></td>
+                        <td>Moderate Tier</td>
+                        <td>HSC</td>
+                        <td>~$8,100 - $8,900 / yr</td>
+                        <td>Limited / Bursaries available</td>
+                        <td>1–2 years prior (Year 4/5)</td>
+                        <td>Varies (Check school directly)</td>
+                        <td><strong>Varies</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Oakhill College</strong></td>
+                        <td>Castle Hill<br><em>Catholic Co-ed</em></td>
+                        <td>High Tier</td>
+                        <td>HSC</td>
+                        <td>~$11,800 / yr</td>
+                        <td>Yes (Academic & Music)</td>
+                        <td>2 years prior</td>
+                        <td>Usually closes early Year 6</td>
+                        <td><strong>ACER</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mount St Benedict College</strong></td>
+                        <td>Pennant Hills<br><em>Catholic Girls</em></td>
+                        <td>High Tier</td>
+                        <td>HSC</td>
+                        <td>~$20,200 / yr</td>
+                        <td>Yes (Academic & Music)</td>
+                        <td>2–3 years prior</td>
+                        <td>Opens late Year 5, Closes Feb Year 6</td>
+                        <td><strong>Edutest</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pacific Hills Christian School</strong></td>
+                        <td>Dural<br><em>Independent Co-ed</em></td>
+                        <td>Moderate-High Tier</td>
+                        <td>HSC</td>
+                        <td>~$16,990 / yr</td>
+                        <td>Yes (Limited Academic)</td>
+                        <td>1–2 years prior</td>
+                        <td>Varies (Year 5/6)</td>
+                        <td><strong>AAS</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Section 6: Official NSW Education Guidelines Reference -->
+    <div class="card">
+        <h2>📘 NSW Education Policy & Selection Rules</h2>
+        <p style="color: var(--text-light); font-size: 0.95rem;">Key principles adapted from official [NSW Education Guidelines](https://education.nsw.gov.au/schooling/parents-and-carers/choosing-a-school-setting/selective-high-schools/choosing-a-school) regarding selective applications:</p>
+        <ul style="margin: 0; padding-left: 20px; font-size: 0.9rem; color: var(--text);">
+            <li><strong>Order of Preferences:</strong> You can choose between 1 and 3 selective high schools. List them in your genuine order of preference, as offers are bound by this sequence.</li>
+            <li><strong>Test Performance Basis:</strong> Applicants are evaluated strictly on test performance. Listing a school first grants no extra score advantage or preference points.</li>
+            <li><strong>Single Offer Rule:</strong> If a student qualifies for multiple schools, an offer is issued strictly from the highest-ranked preference where they meet the threshold. Lower-choice offers are automatically dropped.</li>
+        </ul>
+    </div>
+
+    <!-- Section 7: Selective High School Exam Format Breakdown -->
+    <div class="card exam-card">
+        <h2>💻 NSW Selective High School Placement Test Format</h2>
+        <p style="color: var(--text-light); font-size: 0.95rem;">The exam is administered digitally on computers by Cambridge Assessment. Each of the four components contributes an <strong>equal 25% weighting</strong> to the final score.</p>
+        
+        <div class="exam-grid">
+            <!-- Reading -->
+            <div class="exam-component">
+                <h3>Reading</h3>
+                <div class="exam-meta">
+                    <span>⏳ 45 Minutes</span>
+                    <span>📊 25% Weighting</span>
+                </div>
+                <p><strong>Questions:</strong> 17 questions (some multi-part, totaling ~38 answers).</p>
+                <p><strong>Format:</strong> Computer-based multiple choice with scrollable text extracts.</p>
+                <p><strong>Content:</strong> Fiction, non-fiction, poetry, magazine articles, and multi-text comparisons testing literal comprehension, inference, and vocabulary in context.</p>
+            </div>
+
+            <!-- Mathematical Reasoning -->
+            <div class="exam-component">
+                <h3>Mathematical Reasoning</h3>
+                <div class="exam-meta">
+                    <span>⏳ 40 Minutes</span>
+                    <span>📊 25% Weighting</span>
+                </div>
+                <p><strong>Questions:</strong> 35 multiple-choice questions.</p>
+                <p><strong>Format:</strong> Calculator-free. Scratch paper provided for working out.</p>
+                <p><strong>Content:</strong> Number operations, fractions/decimals/percentages, measurement, geometry, patterns, and multi-step problem solving.</p>
+            </div>
+
+            <!-- Thinking Skills -->
+            <div class="exam-component">
+                <h3>Thinking Skills</h3>
+                <div class="exam-meta">
+                    <span>⏳ 40 Minutes</span>
+                    <span>📊 25% Weighting</span>
+                </div>
+                <p><strong>Questions:</strong> 40 multiple-choice questions.</p>
+                <p><strong>Format:</strong> Computer-based logic and problem-solving puzzles.</p>
+                <p><strong>Content:</strong> Argument analysis, logical/arrangement puzzles, and abstract/non-verbal reasoning (pattern matrices, figure series, and spatial transformations). Requires no prior curriculum knowledge.</p>
+            </div>
+
+            <!-- Writing -->
+            <div class="exam-component">
+                <h3>Writing</h3>
+                <div class="exam-meta">
+                    <span>⏳ 30 Minutes</span>
+                    <span>📊 25% Weighting</span>
+                </div>
+                <p><strong>Task:</strong> 1 extended response task based on a stimulus prompt.</p>
+                <p><strong>Format:</strong> Typed directly on computer (not handwritten).</p>
+                <p><strong>Content:</strong> Assesses content/ideas, structure, vocabulary, and technical language accuracy (grammar, punctuation, spelling) across narrative, persuasive, or discursive genres.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 8: Private School Scholarship Exam Formats -->
+    <div class="card scholarship-card">
+        <h2>🎓 Private School Scholarship Exam Formats</h2>
+        <p style="color: var(--text-light); font-size: 0.95rem;">Private school scholarship tests are non-centralized and administered by individual independent schools partnering with specialized testing bodies (ACER, Edutest, or AAS).</p>
+        
+        <div class="provider-grid">
+            <!-- ACER -->
+            <div class="provider-card">
+                <h3>1. ACER (Co-operative / School Choice)</h3>
+                <p><em>Most popular among elite independent schools (e.g., Abbotsleigh, PLC, Meriden).</em></p>
+                <ul>
+                    <li><strong>Written Expression (50 mins total):</strong> 2 distinct writing tasks (25 mins each) evaluating narrative, persuasive, or creative writing styles from visual or text prompts.</li>
+                    <li><strong>Humanities & Comprehension (40 mins):</strong> ~40–45 multiple-choice questions testing reading comprehension, analysis, and interpretation across literary and non-literary texts.</li>
+                    <li><strong>Mathematics (40 mins):</strong> ~32–36 multiple-choice questions assessing mathematical reasoning, arithmetic, and quantitative problem solving (no calculators allowed).</li>
+                </ul>
+            </div>
+
+            <!-- Edutest -->
+            <div class="provider-card">
+                <h3>2. Edutest Format</h3>
+                <p><em>Used by select independent & Catholic colleges (e.g., Mount St Benedict).</em></p>
+                <ul>
+                    <li><strong>Verbal Reasoning (30 mins):</strong> Multiple-choice logic, vocabulary in context, analogies, and word association patterns.</li>
+                    <li><strong>Numerical Reasoning (30 mins):</strong> Multiple-choice mathematical sequences, pattern recognition, and numerical logic puzzles.</li>
+                    <li><strong>Reading Comprehension (30 mins):</strong> Standard comprehension across multiple text genres.</li>
+                    <li><strong>Mathematics (30 mins):</strong> Core curriculum math and problem solving.</li>
+                    <li><strong>Written Expression (15 mins):</strong> Short-burst writing task emphasizing fast idea generation and expression.</li>
+                </ul>
+            </div>
+
+            <!-- AAS -->
+            <div class="provider-card">
+                <h3>3. Academic Assessment Services (AAS)</h3>
+                <p><em>Utilized by select private independent schools.</em></p>
+                <ul>
+                    <li><strong>Reasoning & Problem Solving (40–45 mins):</strong> Integrated verbal, numerical, and abstract non-verbal spatial reasoning puzzles.</li>
+                    <li><strong>Reading Comprehension (40–45 mins):</strong> In-depth text analysis and inferential interpretation questions.</li>
+                    <li><strong>Mathematics (40–45 mins):</strong> Advanced curriculum and applied mathematical problem-solving tasks.</li>
+                    <li><strong>Written Expression (25–30 mins):</strong> Single extended writing response tailored to visual or thematic prompts.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 9: How to Prepare for the ACER Scholarship Exam -->
+    <div class="card acer-prep-card">
+        <h2>✏️ How to Prepare for the ACER Scholarship Exam</h2>
+        <p style="color: var(--text-light); font-size: 0.95rem;">ACER tests evaluate deep reasoning, higher-order thinking, and speed under strict time limits rather than simple rote learning. Preparation should focus on targeted skill-building across all 3 key exam sections:</p>
+        
+        <div class="acer-grid">
+            <!-- Written Expression Prep -->
+            <div class="acer-box">
+                <h3>1. Written Expression Strategy (2 Tasks, 25 mins each)</h3>
+                <ul>
+                    <li><strong>Master Two Distinct Genres:</strong> Practice both narrative/creative (storytelling from visual/quote prompts) and persuasive/discursive outlines (opinion-based essays).</li>
+                    <li><strong>Pacing & Planning:</strong> Spend 3 minutes planning character/structure, 18 minutes writing, and 4 minutes editing grammar, punctuation, and advanced vocabulary.</li>
+                    <li><strong>Focus on Depth over Length:</strong> ACER examiners favor cohesive, well-developed ideas with mature vocabulary over rushed, lengthy stories without clear resolution.</li>
+                </ul>
+            </div>
+
+            <!-- Humanities Prep -->
+            <div class="acer-box">
+                <h3>2. Humanities Comprehension Strategy (40 mins)</h3>
+                <ul>
+                    <li><strong>Broad Reading Exposure:</strong> Practice reading high-level fiction, historical extracts, poetry, editorial articles, and visual graphics (cartoons/diagrams).</li>
+                    <li><strong>Focus on Inferential Thinking:</strong> Practice identifying author tone, underlying message, figurative language (metaphors, symbolism), and character motivation.</li>
+                    <li><strong>Elimination Technique:</strong> In ACER multiple-choice questions, two options are usually distractor answers. Practice cross-referencing claims directly against text evidence.</li>
+                </ul>
+            </div>
+
+            <!-- Mathematics Prep -->
+            <div class="acer-box">
+                <h3>3. Mathematics Strategy (40 mins, No Calculators)</h3>
+                <ul>
+                    <li><strong>Speed & Mental Math Accuracy:</strong> Build rapid mental calculation skills in fractions, percentages, ratios, unit conversions, and long multiplication/division.</li>
+                    <li><strong>Multi-Step Word Problems:</strong> Practice breaking down complex, unfamiliar problem statements into step-by-step mathematical equations.</li>
+                    <li><strong>Spatial & Geometric Reasoning:</strong> Review perimeter, area, volume, coordinate geometry, symmetry, and pattern recognition.</li>
+                </ul>
+            </div>
+
+            <!-- General Exam Pacing -->
+            <div class="acer-box" style="grid-column: 1 / -1;">
+                <h3>4. General Test Pacing & Time Management</h3>
+                <ul>
+                    <li><strong>Simulate Exam Conditions:</strong> Sit official ACER practice papers under strict time limits (approx. 1 minute per question for math and humanities).</li>
+                    <li><strong>Don't Get Stuck:</strong> If a problem takes longer than 90 seconds, flag it, make an educated guess, and return to it at the end if time permits.</li>
+                    <li><strong>Official Practice Materials:</strong> Access authentic practice tests directly via the official <a href="https://www.acer.org/au/scholarship-tests" target="_blank" style="color: var(--secondary); font-weight: bold;">ACER Scholarship Test Portal</a>.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        NSW Selective & Private School Planning &bull; Tailored for Year 4 Cohort
+    </footer>
+</div>
+
+</body>
+</html>
